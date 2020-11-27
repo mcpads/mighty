@@ -1,0 +1,108 @@
+$app-full-width-px: 1440px;
+$app-width-px: 1200px;
+$basic-margin-px: 120px;
+
+@mixin between-margin {
+  margin-left: $basic-margin-px;
+  margin-right: $basic-margin-px;
+}
+
+@mixin text-el {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+
+
+@mixin text-el-multi ($line) {
+  word-break: break-all;
+  -ms-word-break: break-all;
+  display: flex;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+
+@mixin text-el-width ($width) {
+  @include text-el;
+  max-width: $width;
+}
+
+@mixin flex-vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin inline-flex-center {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin common-extension {
+  width: $app-width-px;
+  margin: 0 auto;
+}
+
+@mixin common-margin {
+  margin: 0 120px;
+}
+
+@mixin transform ($type) {
+  transform: $type;
+  -o-transform: $type;
+  -moz-transform: $type;
+  -webkit-transform: $type;
+}
+
+@mixin centering {
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+}
+
+@mixin common-image {
+  position: absolute;
+  width: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  @include centering;
+}
+
+.common-image {
+  @include common-image
+}
+
+@mixin common-image-cont {
+  overflow: hidden;
+  position: relative;
+  & > img {
+    @include common-image;
+  }
+}
+
+@mixin underline {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.underline {
+  @include underline
+}
