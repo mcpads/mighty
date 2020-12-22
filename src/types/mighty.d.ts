@@ -1,5 +1,5 @@
 import {
-	card, player, board, playerId,
+  card, player, board, playerId,
 } from './game.d';
 
 export type girudable = 'spade' | 'diamond' | 'heart' | 'club' | 'without';
@@ -44,14 +44,14 @@ export interface gameBoard extends board<gamePlayer, gameStatus> {
 	lord?: playerId;
 	friend?: playerId;
 	friendType?: card | playerId;
-	turn: number;
+	turn: number; // player[turn]이 현재 플레이어
 	step: number; // 몇번째 돌았는지
 	nowRule?: throwAuxAction;
 	readonly totalCard: number;
 }
 
 export type gameAction =
-	| { type: 'T_GA_RESET' | 'T_GA_MAIN' | 'T_GA_EPILOG' }
+	| { type: 'T_GA_RESET' | 'T_GA_MAIN' }
 	| {
 			type: 'T_GA_ADD_PLAYER';
 			target: playerId;
